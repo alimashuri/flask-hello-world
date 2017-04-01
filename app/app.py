@@ -20,12 +20,17 @@ app.config.update(dict(
 
 app.config.from_envvar('ALIMASHURI_ENV', silent=True)
 
+
+@app.errorhandler(404)
+def not_found(error):
+        return render_template('404.html'), 404
+
 @app.route('/')
 def index():
     return render_template('index.html', entries="")
 
 
-if __name__ == '__main__':
-    app.run()
+#if __name__ == '__main__':
+#    app.run()
 
 
